@@ -1,13 +1,13 @@
 package pay.one.faster.payments.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.time.LocalDateTime;
 import pay.one.faster.payments.domain.customer.Customer;
 import pay.one.faster.payments.domain.customer.Place;
 import pay.one.faster.payments.domain.order.Card;
 import pay.one.faster.payments.domain.order.Order;
 
-public class PaymentRequest {
+public class Payment {
+
+  private String id;
 
   private Order order;
 
@@ -19,8 +19,26 @@ public class PaymentRequest {
 
   private String type;
 
-  @JsonIgnore
-  private LocalDateTime at;
+  public Payment() {
+  }
+
+  public Payment(String id, Order order, Place address,
+      Card card, Customer customer, String type) {
+    this.id = id;
+    this.order = order;
+    this.address = address;
+    this.card = card;
+    this.customer = customer;
+    this.type = type;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
 
   public Order getOrder() {
     return order;
@@ -61,18 +79,4 @@ public class PaymentRequest {
   public void setType(String type) {
     this.type = type;
   }
-
-  public LocalDateTime getAt() {
-    return at;
-  }
-
-  public void setAt(LocalDateTime at) {
-    this.at = at;
-  }
-
-  public PaymentRequest at(LocalDateTime date){
-    this.at = date;
-    return this;
-  }
-
 }

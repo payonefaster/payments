@@ -12,6 +12,15 @@ public class FraudAnalysisRequest {
 
   private Customer customer;
 
+  public FraudAnalysisRequest(){}
+
+  public FraudAnalysisRequest(Place place, Order order,
+      Customer customer) {
+    this.place = place;
+    this.order = order;
+    this.customer = customer;
+  }
+
   public void setPlace(Place place) {
     this.place = place;
   }
